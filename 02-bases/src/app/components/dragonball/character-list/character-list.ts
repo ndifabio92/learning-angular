@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Character } from '../../../interfaces/character';
 
 @Component({
   selector: 'dragonball-character-list',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './character-list.html',
   styleUrl: './character-list.css',
 })
-export class CharacterList {}
+export class CharacterList {
+  characters = input.required<Character[]>();
+}

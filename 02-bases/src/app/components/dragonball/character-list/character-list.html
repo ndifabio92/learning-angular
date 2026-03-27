@@ -1,1 +1,12 @@
-<p>character-list works!</p>
+<h3>Listado</h3>
+<ul class="list-group">
+  @for(character of characters(); track character.id; let idx = $index) {
+  @if(character.power > 500) {
+  <li class="list-group-item">
+    <span>{{idx + 1}} - {{ character.name }}</span>
+    <strong [class.text-danger]="character.power > 9000"> ({{ character.power }})</strong>
+    <!-- <strong [ngClass]="powerClasses()"> ({{ character.power }})</strong> -->
+  </li>
+  }
+  }
+</ul>
