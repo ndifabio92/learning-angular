@@ -15,7 +15,6 @@ export class CountryPage {
   countryService = inject(CountryService);
 
   regions = signal(this.countryService.regions);
-
   countriesByRegion = signal<Country[]>([]);
   borders = signal<Country[]>([]);
 
