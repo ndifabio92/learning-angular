@@ -37,4 +37,17 @@ export class PokemonsService {
   public loadPokemon(id: string) {
     return this.http.get<Pokemon>(`https://pokeapi.co/api/v2/pokemon/${id}`);
   }
+
+  public getAll(): Observable<SimplePokemon[]> {
+    return this.http
+      .get<PokeAPIResponse>(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=100000`)
+      .pipe(
+        map((resp) =>
+          resp.results.map((pokemon) => ({
+            id: pokemon.url.split('/').at(-2) ?? '',
+            name: pokemon.name,
+          })),
+        ),
+      );
+  }
 }
